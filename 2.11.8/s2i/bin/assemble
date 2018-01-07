@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+shopt -s dotglob
+mv /tmp/src/* ./
+
+echo "--> Building application source ..."
+sbt package
+find target/ -name '*.jar' -exec cp {} /opt/app-root/src \;
+
+# set permissions for any installed artifacts
+fix-permissions /opt/app-root
