@@ -6,7 +6,7 @@ shopt -s dotglob
 mv /tmp/src/* ./
 
 echo "--> Building application source ..."
-sbt package
+sbt assembly
 find target/ -name '*.jar' -exec cp {} /opt/app-root/src \;
 
 # set permissions for any installed artifacts
