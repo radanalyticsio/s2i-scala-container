@@ -1,5 +1,4 @@
 lazy val akkaHttpVersion = "10.0.9"
-lazy val akkaVersion    = "2.5.3"
 
 lazy val root = (project in file(".")).
   settings(
@@ -13,7 +12,6 @@ lazy val root = (project in file(".")).
     mainClass in assembly := Some("com.opbstudios.examples.akka.testapp.TestApp"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-http"         % akkaHttpVersion,
-      "com.typesafe.akka" %% "akka-http-xml"     % akkaHttpVersion,
-      "com.typesafe.akka" %% "akka-stream"       % akkaVersion
+      "com.typesafe.akka" %% "akka-http-xml"     % akkaHttpVersion
     )
   )
