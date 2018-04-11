@@ -29,7 +29,12 @@ COPY \
     scala-2.11.8.tgz \
     /tmp/artifacts/
 
+# Copy extra files to the image.
+COPY ./root/ /
+
 RUN yum install -y java && \
+    bash -x /opt/app-root/check_for_download_sbt /tmp/artifacts/sbt-0.13.13.tgz && \
+    bash -x /opt/app-root/check_for_download_scala /tmp/artifacts/scala-2.11.8.tgz && \
     tar -zxf /tmp/artifacts/sbt-0.13.13.tgz -C /opt && \
     ln -s /opt/sbt-launcher-packaging-0.13.13 /opt/sbt && \
     tar -zxf /tmp/artifacts/scala-2.11.8.tgz -C /opt && \
@@ -39,9 +44,6 @@ RUN yum install -y java && \
 
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin $STI_SCRIPTS_PATH
-
-# Copy extra files to the image.
-COPY ./root/ /
 
 # - In order to drop the root user, we have to make some directories world
 #   writable as OpenShift default security model is to run the container
