@@ -9,3 +9,6 @@ OPENSHIFT_NAMESPACES =
 
 include common/common.mk
 
+zero-tarballs:
+	find ./2.11.8 -name "*.tar.gz" -type f -exec truncate -s 0 {} \;
+	find ./2.11.8 -name "*.tgz" -type f -exec truncate -s 0 {} \;
