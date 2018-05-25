@@ -51,11 +51,11 @@ COPY ./s2i/bin $STI_SCRIPTS_PATH
 RUN chown -R 1001:0 /opt/app-root && \
     chown -R 1001:0 /opt/sbt && \
     chown -R 1001:0 /opt/scala && \
-    chmod g+rw /opt/sbt/conf && \
+    chmod g+rw -R /opt/sbt/conf && \
     chown -R 1001:0 /tmp/.ivy2 && \
-    chmod g+rw /tmp/.ivy2 && \
+    chmod g+rw -R /tmp/.ivy2 && \
     chown -R 1001:0 /tmp/.sbt && \
-    chmod g+rw /tmp/.sbt && \
+    chmod g+rw -R /tmp/.sbt && \
     fix-permissions /opt/app-root && \
     rpm-file-permissions
 
