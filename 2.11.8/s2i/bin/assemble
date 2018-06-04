@@ -141,4 +141,6 @@ check_project_sbt ${S2I_SOURCE_DIR}
 apply_plugins ${S2I_SOURCE_DIR} ${sbt_dir}
 build_sbt ${S2I_SOURCE_DIR} ${DEPLOYMENTS_DIR}
 
+echo "Run fix-permissions on ${ivy_dir}"
+fix-permissions ${ivy_dir}
 echo "... done"
