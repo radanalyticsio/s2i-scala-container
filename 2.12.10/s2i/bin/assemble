@@ -4,7 +4,7 @@
 source `dirname "$0"`/s2i-setup
 
 ivy_dir=/tmp/.ivy2
-sbt_dir=/tmp/.sbt/1.2.1
+sbt_dir=/tmp/.sbt/1.0
 sbt_version=""
 
 # sbt arguments setting up the environment
@@ -136,7 +136,8 @@ sanity_check ${S2I_SOURCE_DIR}
 echo "S2I source build for sbt detected"
 
 setup_sbt
-sbt_version=$(parse_sbt_key sbt-version)
+$(parse_sbt_key sbt-version)
+sbt_version=1.2.1
 check_project_sbt ${S2I_SOURCE_DIR}
 apply_plugins ${S2I_SOURCE_DIR} ${sbt_dir}
 build_sbt ${S2I_SOURCE_DIR} ${DEPLOYMENTS_DIR}
